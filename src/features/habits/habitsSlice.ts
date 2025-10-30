@@ -18,7 +18,7 @@ const habitsAdapter = createEntityAdapter<Habit>({
 type ISODate = string;
 
 type HabitsState = ReturnType<typeof habitsAdapter.getInitialState> & {
-  logsByDate: Record<ISODate, string[]>; // date -> array of habit IDs
+  logsByDate: Record<ISODate, string[]>;
   search: string;
   activeTag: string | 'all';
 };
@@ -30,7 +30,7 @@ const initialState: HabitsState = {
   activeTag: 'all',
 };
 
-const toISODate = (d = new Date()) => d.toISOString().slice(0, 10); // YYYY-MM-DD
+const toISODate = (d = new Date()) => d.toISOString().slice(0, 10);
 
 const habitsSlice = createSlice({
   name: 'habits',
@@ -71,20 +71,17 @@ export const {
 
 export default habitsSlice.reducer;
 
-// Base selectors
 const baseSelectors = habitsAdapter.getSelectors<RootState>(s => s.habits);
 export const selectAllHabits = baseSelectors.selectAll;
 export const selectHabitById = baseSelectors.selectById;
 export const selectLogsByDate = (state: RootState, dateISO: string) => state.habits.logsByDate[dateISO] ?? [];
 
-// Convenience: “completed today”
 export const selectCompletedToday = (state: RootState) => {
   const today = new Date();
   const iso = today.toISOString().slice(0, 10);
   return selectLogsByDate(state, iso);
 };
 
-// Derived (filter/search)
 export const selectVisibleHabits = (state: RootState) => {
   const q = state.habits.search.toLowerCase().trim();
   const tag = state.habits.activeTag;
