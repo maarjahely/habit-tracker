@@ -13,7 +13,7 @@ function App() {
     <>
       <AppBar position="static">
         <Toolbar sx={{ gap: 2 }}>
-          <Typography variant="h6" sx={{ flexGrow: 1 }}>habit-tracker</Typography>
+          <Typography variant="h6" sx={{ flexGrow: 1 }}>Habit Tracker</Typography>
           <Button color="inherit" onClick={() => setOpen(true)}>Add Habit</Button>
         </Toolbar>
       </AppBar>
