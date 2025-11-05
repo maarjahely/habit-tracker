@@ -1,7 +1,7 @@
 import { Dialog, DialogTitle, DialogContent, DialogActions, Button, Stack, TextField, Chip } from '@mui/material';
 import { useState } from 'react';
 
-type Props = { open: boolean; onClose: () => void; onSubmit: (title: string, tags: string[]) => void };
+interface Props { open: boolean; onClose: () => void; onSubmit: (title: string, tags: string[]) => void }
 
 export default function AddHabitDialog({ open, onClose, onSubmit }: Props) {
   const [title, setTitle] = useState('');
