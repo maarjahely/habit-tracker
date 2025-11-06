@@ -4,6 +4,7 @@ import HabitList from './features/habits/components/HabitList';
 import { useState } from 'react';
 import { useAppDispatch } from './app/hooks';
 import { addHabit } from './features/habits/habitsSlice';
+import { ThemeToggleButton } from './app/components/theme/ThemeToggleButton';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -13,8 +14,13 @@ function App() {
     <>
       <AppBar position="static">
         <Toolbar sx={{ gap: 2 }}>
-          <Typography variant="h6" sx={{ flexGrow: 1 }}>Habit Tracker</Typography>
-          <Button color="inherit" onClick={() => setOpen(true)}>Add Habit</Button>
+          <Typography variant="h6" sx={{ flexGrow: 1 }}>
+            Habit Tracker
+          </Typography>
+          <Button color="inherit" onClick={() => setOpen(true)}>
+            Add Habit
+          </Button>
+          <ThemeToggleButton />
         </Toolbar>
       </AppBar>
 
@@ -33,4 +39,4 @@ function App() {
   );
 }
 
-export default App
+export default App;
